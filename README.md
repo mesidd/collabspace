@@ -66,7 +66,7 @@ If this helps even one person build their dream life — it’s already worth it
 
 ## 🔗 Connect with Me
 
-- [LinkedIn](www.linkedin.com/in/sarmasiddhartha)
+- [LinkedIn](https://www.linkedin.com/in/sarmasiddhartha/)
 - [GitHub](https://github.com/mesidd)
 
 
