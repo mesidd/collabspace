@@ -17,8 +17,26 @@ const Signup = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if(!email || !username || !password){
+    try {
+      const res = await fetch('/api/auth/signup', {
+        method: "POST",
+        headers: {
+          "Content-Type" : "application/json"
+        },
+        body: JSON.stringify({username, email, password})
+      });
 
+      const data = await res.json();
+      setError(data.message);
+
+      if(res.ok) {
+        setUsername("");
+        setEmail("");
+        setPassword("");
+      }
+      
+    } catch (error) {
+      setError("Something went wrong");
     }
 
   }
@@ -26,12 +44,12 @@ const Signup = () => {
   return (
     <div className='max-w-md mx-auto p-6 bg-white rounded-lg shadow-md'>
 
-      <h1 className="text-2xl font-bold mb-4">Sign Up</h1>
-      {error && <p>{error}</p>}
+      {/* <h1 className="text-2xl font-bold mb-4">Sign Up</h1> */}
+      {/* {error && <p className='text-2xl text-green-500 text-center'>{error}</p>} */}
 
       <form onSubmit={handleSubmit}>
 
-        <div className='mb-4'>
+        <div className='mb-4 mt-6'>
           <label htmlFor="email" className='block text-sm font-medium text-gray-700'>
             Email
           </label>
@@ -104,6 +122,8 @@ const Signup = () => {
         Sign Up
       </button>
       </form>
+
+      {error && <p className={`text-2xl text-center mt-4 ${error === "User registered successfully!" ? 'text-green-600' : 'text-red-700'}`}>{error}</p>}
     </div>
   )
 
