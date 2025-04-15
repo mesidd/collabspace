@@ -4,7 +4,7 @@ const JWT_SECRET =  process.env.JWT_SECRET || 'your_dev_secret';
 
 export function signJWT(payload: object, options?: jwt.SignOptions ): string {
   return jwt.sign(payload, JWT_SECRET, {
-    expiresIn: '7d',
+    expiresIn: '1d',
     ...options,
   });
 }

@@ -11,7 +11,7 @@ const Signup = () => {
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(''); 
+  const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
   // const [phone, setPhone] = useState('');
@@ -41,7 +41,6 @@ const Signup = () => {
     } catch (error) {
       setError("Something went wrong");
     }
-
   }
 
   return (

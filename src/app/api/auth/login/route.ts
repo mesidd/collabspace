@@ -26,6 +26,13 @@ export async function POST(request: Request): Promise<Response> {
       return NextResponse.json({message: "Invalid credentials"}, {status: 401})
     }
 
+    if(!user.isVerified) {
+      return NextResponse.json(
+        {message: "Please verify your email before logging in."},
+        {status: 403}
+      );
+    }
+
     const isPasswordCorrect = await bcrypt.compare(password, user.password);
 
     if(!isPasswordCorrect){
