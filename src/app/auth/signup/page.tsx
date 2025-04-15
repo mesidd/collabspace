@@ -4,8 +4,10 @@
 
 import React, { use, useState } from 'react';
 import { deflate } from 'zlib';
+import { useRouter } from 'next/navigation';
 
 const Signup = () => {
+  const router = useRouter();
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -33,6 +35,7 @@ const Signup = () => {
         setUsername("");
         setEmail("");
         setPassword("");
+        router.push('/');
       }
       
     } catch (error) {
@@ -43,9 +46,6 @@ const Signup = () => {
 
   return (
     <div className='max-w-md mx-auto p-6 bg-white rounded-lg shadow-md'>
-
-      {/* <h1 className="text-2xl font-bold mb-4">Sign Up</h1> */}
-      {/* {error && <p className='text-2xl text-green-500 text-center'>{error}</p>} */}
 
       <form onSubmit={handleSubmit}>
 
@@ -100,20 +100,6 @@ const Signup = () => {
         </button>
         </div>
       </div>
-{/* 
-      <div className='mb-4'>
-        <label htmlFor="phone" className='block text-sm font-medium text-gray-700'>
-          Phone Number
-        </label>
-        <input
-          id='phone'
-          type="tel"
-          className='mt-1 p-2 w-full border border-gray-300 rounded-md'
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-          required
-        />
-      </div> */}
 
       <button 
         type='submit'
