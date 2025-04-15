@@ -20,6 +20,7 @@ const Login = () => {
         headers: {
           "Content-Type": "application/json"
         },
+        credentials: 'include',
         body: JSON.stringify({email, password})
       });
 
@@ -29,7 +30,7 @@ const Login = () => {
       if(res.ok ) {
         setEmail('');
         setPassword('');
-        router.push('/');
+        router.push('/dashboard');
       }
     } catch (error) {
     setError("Something went wrong")
@@ -85,11 +86,6 @@ const Login = () => {
         </button>
       </form>
 
-    {error && (
-      <p className={`text-2xl text-center mt-4 ${error === "Login Successful" ? 'text-green-600' : 'text-red-700'}`}>
-        {error}
-      </p>
-    )}
     </div>
   )
 }
