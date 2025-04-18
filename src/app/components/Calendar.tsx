@@ -17,7 +17,7 @@ export default function Calendar(){
   return (
     <div className='max-w-4xl mx-auto p-6 bg-white rounded-2xl shadow-md'>
 
-      <div className='text-2xl font-semibold mb-4 text-center text-yellow-500 bg-blue-100'>
+      <div className='text-2xl font-semibold mb-4 text-center text-yellow-500 bg-gray-100'>
         {format(today , "dd MMMM yyyy")} | Week {currentWeekOfMonth} of {weekInMonth} | {daysLeft} days left
       </div>
 

@@ -1,5 +1,7 @@
 import mongoose, { Schema, Document, mongo} from "mongoose";
 
+type AccountType = 'personal' | 'business' | 'admin'
+
 export interface IUser extends Document {
   username: string;
   email: string;
@@ -7,6 +9,7 @@ export interface IUser extends Document {
   isVerified: boolean;
   verifyToken?: string;
   verifyTokenExpiry?: Date;
+  accountType: AccountType;
 }
 
 const userSchema = new Schema<IUser>(
@@ -39,7 +42,12 @@ const userSchema = new Schema<IUser>(
     },
     verifyTokenExpiry: {
       type: Date,
-    }
+    },
+    accountType : {
+      type: String,
+      enum: ['personal','admin','business'],
+      default: 'personal'
+    },
   },
   {
     timestamps: true
