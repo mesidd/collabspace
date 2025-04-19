@@ -30,7 +30,7 @@ const Login = () => {
       if(res.ok ) {
         setEmail('');
         setPassword('');
-        router.push('/dashboard');
+        router.push('/user-details');
       }
     } catch (error) {
     setError("Something went wrong")

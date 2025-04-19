@@ -10,6 +10,12 @@ export interface IUser extends Document {
   verifyToken?: string;
   verifyTokenExpiry?: Date;
   accountType: AccountType;
+  currentPosition: String;
+  goals: String;
+  challenges: String;
+  achievements: String;
+  motivationalInterests: String;
+  nickname: String;
 }
 
 const userSchema = new Schema<IUser>(
@@ -48,6 +54,42 @@ const userSchema = new Schema<IUser>(
       enum: ['personal','admin','business'],
       default: 'personal'
     },
+
+
+    // currentPosition: String;
+    // goals: String;
+    // challenges: String;
+    // achievements: String;
+    // motivationalInterests: String;
+    // nickname: String;
+    // Personal Details For Summary
+
+    currentPosition:{
+      type: String,
+      default: ''
+    },
+    goals:{
+      type: [String],
+      default: [],
+    },
+    challenges:{
+      type: [String],
+      default:[]
+    },
+    achievements:{
+      type:[String],
+      default:[]
+    },
+    motivationalInterests:{
+      type:[String],
+      default:[]
+    },
+    nickname:{
+      type: String,
+      default:''
+    },
+    // createdAt: {type: Date, default: Date.now},
+    // upadaedAt: {type: Date, default: Date.now},
   },
   {
     timestamps: true
