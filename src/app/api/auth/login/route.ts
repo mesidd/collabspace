@@ -45,11 +45,17 @@ export async function POST(request: Request): Promise<Response> {
       httpOnly: true,
       path: '/',
       maxAge: 60 * 60 * 24 * 7,
-      sameSite: "lax",
-      secure: process.env.NODE_ENV === "production"
+      sameSite: "none",
+      secure: process.env.NODE_ENV === "production",
     });
 
-    const response = NextResponse.json({ message: "Login successful"});
+    const response = NextResponse.json({ message: "Login successful",
+      user: {
+        _id: user._id,
+        email: user.email,
+      }
+    });
+    
     response.headers.set("Set-Cookie", cookie);
 
     return response;

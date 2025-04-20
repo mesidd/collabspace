@@ -32,6 +32,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-
-// collabspace/src/app/layout.tsx
